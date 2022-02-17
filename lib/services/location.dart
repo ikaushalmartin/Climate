@@ -1,12 +1,14 @@
 import 'package:geolocator/geolocator.dart';
 
 class Location {
-  double latitude = 12;
-  double longitude = 12;
-  Future<void> getcurrentlocation() async {
+ late double latitude;
+  late double longitude;
+
+  Future<void> getCurrentLocation() async {
     try {
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.low);
+      Position position = await Geolocator
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
+
       latitude = position.latitude;
       longitude = position.longitude;
     } catch (e) {
